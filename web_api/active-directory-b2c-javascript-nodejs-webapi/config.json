@@ -1,0 +1,23 @@
+{
+    "credentials": {
+        "tenantName": "swddd",
+        "clientID": "13deb26c-88d0-48cb-9390-5b8d95ef8d20"
+    },
+    "policies": {
+        "policyName": "B2C_1_susi"
+    },
+    "resource": {
+        "scope": ["tasks.read"]
+    },
+    "metadata": {
+        "authority": "login.microsoftonline.com",
+        "discovery": ".well-known/openid-configuration",
+        "version": "v2.0"
+    },
+    "settings": {
+        "isB2C": true,
+        "validateIssuer": true,
+        "passReqToCallback": false,
+        "loggingLevel": "info"
+    }
+}
