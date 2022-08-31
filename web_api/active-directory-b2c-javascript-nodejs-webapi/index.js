@@ -37,6 +37,7 @@ const app = express();
 app.use(express.json()); 
 
 //enable CORS (for testing only -remove in production/deployment)
+// 允许跨域
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Authorization, Origin, X-Requested-With, Content-Type, Accept');

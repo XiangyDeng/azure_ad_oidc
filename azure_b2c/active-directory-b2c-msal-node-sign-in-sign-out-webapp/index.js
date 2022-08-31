@@ -74,7 +74,7 @@ const tokenRequest = {
  * and set them as desired. Visit: https://www.npmjs.com/package/express-session
  */
  const sessionConfig = {
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET,     // 未设置
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -89,7 +89,7 @@ const tokenRequest = {
 //Create an express instance
 const app = express();
 
-//Set handlebars as your view engine
+//Set handlebars as your view engine （view engine） 
 app.engine('.hbs', engine({extname: '.hbs'}));
 app.set('view engine', '.hbs');
 app.set("views", "./views");
@@ -112,7 +112,7 @@ app.use(session(sessionConfig));
 
     // prepare the request
     console.log("Fetching Authorization code")
-    authCodeRequest.authority = authority;
+    authCodeRequest.authority = authority;  // choose different user flow
     authCodeRequest.scopes = scopes;
     authCodeRequest.state = state;
 
@@ -136,10 +136,10 @@ app.use(session(sessionConfig));
  
  //<ms_docref_app_endpoints>
  app.get('/', (req, res) => {
-    res.render('signin', { showSignInButton: true });
+    res.render('signin', { showSignInButton: true });   // 页面
 });
 
-app.get('/signin',(req, res)=>{
+app.get('/signin',(req, res)=>{                         // 请求（注意区别）
         //Initiate a Auth Code Flow >> for sign in
         //no scopes passed. openid, profile and offline_access will be used by default.
         getAuthCode(process.env.SIGN_UP_SIGN_IN_POLICY_AUTHORITY, [], APP_STATES.LOGIN, res);
@@ -165,7 +165,7 @@ app.get('/profile',(req, res)=>{
 app.get('/signout',async (req, res)=>{    
     logoutUri = process.env.LOGOUT_ENDPOINT;
     req.session.destroy(() => {
-        //When session destruction succeeds, notify B2C service using the logout uri.
+        //When session destruction succeeds, notify B2C service using the logout uri. return to http://localhost:3000
         res.redirect(logoutUri);
     });
 });
