@@ -126,9 +126,9 @@ app.use(session(sessionConfig));
         });
 }
 
-app.get('/', (req, res) => {
-    res.render('signin', { showSignInButton: true });
-});
+// app.get('/', (req, res) => {
+//     res.render('signin', { showSignInButton: true });
+// });
 
 
 
@@ -200,10 +200,11 @@ app.get('/api', async (req, res) => {
 /**
  * Sign out end point
 */
-app.get('/signout',async (req, res)=>{    
-    logoutUri = process.env.LOGOUT_ENDPOINT;
-    req.session.destroy(() => {
-        res.redirect(logoutUri);
-    });
-});
+// app.get('/signout',async (req, res)=>{    
+//     logoutUri = process.env.LOGOUT_ENDPOINT;
+//     req.session.destroy(() => {
+//         res.redirect(logoutUri);
+//     });
+// });
+
 app.listen(process.env.SERVER_PORT, () => console.log(`Msal Node Auth Code Sample app listening on port !` + process.env.SERVER_PORT));
